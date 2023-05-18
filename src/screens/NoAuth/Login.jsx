@@ -6,69 +6,100 @@ import Icons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Login = ({ navigation }) => {
-    const [username, setUsername] = React.useState('')
-    const [checkUsername, setCheckUsername] = React.useState(false)
-    const [isValiteUser, setIsValiteUser] = React.useState(true)
-    const [password, setPassword] = React.useState('')
-    const [checkPassword, setCheckPassword] = React.useState(false)
-    const [isValitePassword, setIsValitePassword] = React.useState(true)
-    const [hidePassword, setHidePassword] = React.useState(true)
 
+    const [data, setData] = React.useState({
+        username: '',
+        checkUsername: false,
+        isValiteUser: true,
+        password: '',
+        checkPassword: false,
+        isValitePassword: true,
+        hidePassword: true,
+    })
 
     const validateUsername = (val) => {
         if (val.trim().length >= 2) {
-            setUsername(val)
-            setCheckUsername(true)
-            setIsValiteUser(true)
+
+            setData({
+                ...data,
+                username: val,
+                checkUsername: true,
+                isValiteUser: true
+
+            })
         } else {
-            setUsername(val)
-            setCheckUsername(false)
-            setIsValiteUser(false)
+            setData({
+                ...data,
+                username: val,
+                checkUsername: false,
+                isValiteUser: false
+            })
         }
     }
 
     const handValideUser = (val) => {
         if (val.trim().length >= 2) {
-            setIsValiteUser(true)
+            setData({
+                ...data,
+                isValiteUser: true
+            })
         } else {
-            setIsValiteUser(false)
+            setData({
+                ...data,
+                isValiteUser: false
+            })
         }
     }
 
     const validatePassword = (val) => {
         if (val.trim().length >= 8) {
-            setPassword(val)
-            setCheckPassword(true)
-            setIsValitePassword(true)
+            setData({
+                ...data,
+                password: val,
+                checkPassword: true,
+                isValitePassword: true
+            })
         } else {
-            setPassword(val)
-            setCheckPassword(false)
-            setIsValitePassword(false)
+            setData({
+                ...data,
+                password: val,
+                checkPassword: false,
+                isValitePassword: false
+            })
         }
     }
 
     const handValidePassword = (val) => {
         if (val.trim().length >= 8) {
-            setIsValitePassword(true)
+            setData({
+                ...data,
+                isValitePassword: true
+            })
         } else {
-            setIsValitePassword(false)
+            setData({
+                ...data,
+                isValitePassword: false
+            })
         }
     }
 
     const updateHidePassword = () => {
-        setHidePassword(!hidePassword)
+        setData({
+            ...data,
+            hidePassword: !data.hidePassword
+        })
     }
 
     const handleLogin = () => {
-        if (username.length == 0 || password.length == 0) {
+        if (data.username.length == 0 || data.password.length == 0) {
             Toast.show('用户名和密码不能为空')
             return;
         }
-        if (username.length < 2) {
+        if (data.username.length < 2) {
             Toast.show('用户名最短2位')
             return;
         }
-        if (password.length < 8) {
+        if (data.password.length < 8) {
             Toast.show('密码最短8位')
             return;
         }
@@ -80,7 +111,7 @@ const Login = ({ navigation }) => {
     return (
         <View style={[styles.container]}>
             <ImageBackground
-                source={require('../../../assets/img/index_8.jpg')}
+                source={require('../../../assets/img/index_5.png')}
                 style={[styles.bgImage]}
             >
                 <View style={[styles.header]}>
@@ -97,12 +128,12 @@ const Login = ({ navigation }) => {
                             <TextInput
                                 style={[styles.input]}
                                 placeholder="用户名"
-                                value={username}
+                                value={data.username}
                                 onChangeText={(val) => validateUsername(val)}
                                 onEndEditing={(e) => handValideUser(e.nativeEvent.text)}
                             />
                             {
-                                checkUsername
+                                data.checkUsername
                                     ?
                                     <Animatable.View animation='bounceIn'>
                                         <Icons name={'check-circle-outline'} size={30} />
@@ -112,7 +143,7 @@ const Login = ({ navigation }) => {
                             }
                         </View>
                         {
-                            isValiteUser
+                            data.isValiteUser
                                 ?
                                 null
                                 :
@@ -127,14 +158,14 @@ const Login = ({ navigation }) => {
                             <TextInput
                                 style={[styles.input]}
                                 placeholder="密码"
-                                value={password}
-                                secureTextEntry={hidePassword ? true : false}
+                                value={data.password}
+                                secureTextEntry={data.hidePassword ? true : false}
                                 onChangeText={(val) => validatePassword(val)}
                                 onEndEditing={(e) => handValidePassword(e.nativeEvent.text)}
                             />
                             <TouchableOpacity onPress={updateHidePassword}>
                                 {
-                                    hidePassword
+                                    data.hidePassword
                                         ?
                                         <Icons name={'eye-off-outline'} size={30} />
                                         :
@@ -143,7 +174,7 @@ const Login = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                         {
-                            isValitePassword
+                            data.isValitePassword
                                 ?
                                 null
                                 :
@@ -175,11 +206,6 @@ const Login = ({ navigation }) => {
                                 <Text style={[styles.textSign, { color: '#009387' }]}>注册</Text>
                             </TouchableOpacity>
                         </View>
-
-
-
-
-
 
                     </ScrollView>
 
@@ -255,6 +281,6 @@ const styles = StyleSheet.create({
     },
     textSign: {
         textAlign: 'center',
-        fontSize:21,
+        fontSize: 21,
     },
 })

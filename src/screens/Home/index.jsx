@@ -1,22 +1,27 @@
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
+import * as Animatable from 'react-native-animatable';
 
 const Index = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.top} />
+            <Animatable.View
+                animation={"fadeInDownBig"}
+                style={styles.top}
+                // duration={500}
+            />
+            <Image
+                style={styles.img}
+                source={require('../../../assets/img/老年健康宣传周.png')}
+            />
+            <View style={styles.nine}>
                 <Image
-                    style={styles.img}
-                    source={require('../../../assets/img/老年健康宣传周.png')}
+                    style={styles.box}
+                    source={require('../../../assets/img/demo.png')}
                 />
-                <View style={styles.nine}>
-                    <Image
-                        style={styles.box}
-                        source={require('../../../assets/img/demo.png')}
-                    />
 
-                </View>
+            </View>
         </View >
     )
 }
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
         bottom: '75%',
         backgroundColor: '#5ea3e1',
         borderBottomRightRadius: 40,
-        borderBottomLeftRadius:40,
+        borderBottomLeftRadius: 40,
     },
     img: {
         top: 20,
