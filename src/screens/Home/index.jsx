@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
 
-const Home = ({ navigation }) => {
+const Index = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
             <View style={styles.top} />
                 <Image
                     style={styles.img}
-                    source={require('../../assets/img/老年健康宣传周.png')}
+                    source={require('../../../assets/img/老年健康宣传周.png')}
                 />
                 <View style={styles.nine}>
                     <Image
                         style={styles.box}
-                        source={require('../../assets/img/demo.png')}
+                        source={require('../../../assets/img/demo.png')}
                     />
 
                 </View>
@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
     )
 }
 
-export default Home
+export default Index
 
 const styles = StyleSheet.create({
     container: {

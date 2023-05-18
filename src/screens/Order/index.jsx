@@ -1,7 +1,7 @@
 import { StyleSheet, Button } from 'react-native'
 import React from 'react'
 
-const UserScreen = ({ navigation }) => {
+const Index = ({ navigation }) => {
     return (
         <Button
             title="跳到首页"
@@ -10,6 +10,6 @@ const UserScreen = ({ navigation }) => {
     )
 }
 
-export default UserScreen
+export default Index
 
 const styles = StyleSheet.create({})

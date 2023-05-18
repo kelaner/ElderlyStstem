@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Customer = () => {
+const Index = () => {
   return (
     <View>
       <Text>Customer</Text>
@@ -9,6 +9,6 @@ const Customer = () => {
   )
 }
 
-export default Customer
+export default Index
 
 const styles = StyleSheet.create({})
