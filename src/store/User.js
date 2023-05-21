@@ -1,21 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const initialState = {
+    isLogin: false
+}
 
-export const COUNTER = "Counter";
-const { reducer: counterSlice, actions } = createSlice({
-    name: COUNTER,
-    initialState: {
-        num: 1
-    },
+const userSlice = createSlice({
+    name: 'user',
+    initialState,
     reducers: {
-        increment: (state, action) => {
-            state.num += action.payload
+        loginSuccess(state, action) {
+            state.isLogin = true
         },
-        decrement: (state, action) => {
-            state.num -= action.payload
+        loginFailed(state, action) {
+            state.isLogin = false
         }
     }
 })
 
-export const { increment, decrement } = actions
-export default counterSlice
+export const { loginSuccess, loginFailed } = userSlice.actions
+
+export default userSlice.reducer
