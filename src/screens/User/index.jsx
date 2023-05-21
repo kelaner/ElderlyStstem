@@ -51,6 +51,20 @@ const Index = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
+
+                
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('Counter')}
+                >
+                    <View style={[styles.listItems]}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Icons name={'logout'} size={25} color={'blue'} />
+                            <Text style={{ marginLeft: 10, fontSize: 18 }}>计数器</Text>
+                        </View>
+                        <Icons name={'chevron-right'} size={30} color={'#1e1e1e'} />
+                    </View>
+                </TouchableOpacity>
+
                 <TouchableOpacity
                     onPress={() => Toast.show('aaa')}
                 >

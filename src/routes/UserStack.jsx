@@ -7,6 +7,8 @@ import AboutScreen from '../screens/User/About'
 import SettingScreen from '../screens/User/Setting'
 import LoginScreen from '../screens/NoAuth/Login'
 import RegisterScreen from '../screens/NoAuth/Register'
+import CounterScreen from '../screens/User/Counter'
+
 
 const Stack = createNativeStackNavigator();
 
@@ -74,6 +76,18 @@ const UserStack = () => {
                 component={RegisterScreen}
                 options={{
                     title: "注册",
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        fontSize: 30
+                    },
+                }}
+            />
+
+            <Stack.Screen
+                name='Counter'
+                component={CounterScreen}
+                options={{
+                    title: "计数",
                     headerTitleAlign: "center",
                     headerTitleStyle: {
                         fontSize: 30
