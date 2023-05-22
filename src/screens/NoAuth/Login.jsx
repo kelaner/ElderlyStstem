@@ -4,8 +4,13 @@ import * as Animatable from 'react-native-animatable';
 import Toast from 'react-native-root-toast';
 import Icons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useSelector, useDispatch } from 'react-redux'
+import { loginSuccess } from '../../store/User';
 
 const Login = ({ navigation }) => {
+
+    const isLogin = useSelector(state => state.user.isLogin)
+    const dispatch = useDispatch()
 
     const [data, setData] = React.useState({
         username: '',
@@ -105,6 +110,14 @@ const Login = ({ navigation }) => {
         }
 
         Toast.show('登陆成功')
+
+        let userInfo = {
+            username: data.username,
+            password: data.password,
+        }
+
+        dispatch(loginSuccess(userInfo))
+      
     }
 
 

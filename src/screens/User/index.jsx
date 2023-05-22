@@ -2,9 +2,19 @@ import { StyleSheet, View, Text, SafeAreaView, ScrollView, Image, TouchableOpaci
 import React from 'react'
 import Icons from '@expo/vector-icons/MaterialCommunityIcons'
 import Toast from 'react-native-root-toast'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { loginFailed } from '../../store/User'
 
 const Index = ({ navigation }) => {
+
+    const isLogin = useSelector(state => state.user.isLogin)
+    const dispatch = useDispatch()
+
+   const doLogout = () => {
+       dispatch(loginFailed())
+       Toast.show('退出成功')
+    }
+    
     return (
         <SafeAreaView style={[styles.container]}>
             <ScrollView>
@@ -66,7 +76,7 @@ const Index = ({ navigation }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => Toast.show('aaa')}
+                    onPress={() => doLogout()}
                 >
                     <View style={[styles.listItems]}>
                         <View style={{ flexDirection: 'row' }}>
