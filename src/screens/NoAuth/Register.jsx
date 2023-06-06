@@ -18,10 +18,14 @@ const Register = ({ navigation }) => {
     username: '',
     checkUsername: false,
     isValiteUser: true,
-    password: '',
-    checkPassword: false,
-    isValitePassword: true,
-    hidePassword: true
+    password1: '',
+    checkPassword1: false,
+    isValitePassword1: true,
+    hidePassword1: true,
+    password2: '',
+    checkPassword2: false,
+    isValitePassword2: true,
+    hidePassword2: true
   })
 
   const validateUsername = val => {
@@ -56,47 +60,90 @@ const Register = ({ navigation }) => {
     }
   }
 
-  const validatePassword = val => {
+  const validatePassword1 = val => {
     if (val.trim().length >= 6) {
       setData({
         ...data,
-        password: val,
-        checkPassword: true,
-        isValitePassword: true
+        password1: val,
+        checkPassword1: true,
+        isValitePassword1: true
       })
     } else {
       setData({
         ...data,
-        password: val,
-        checkPassword: false,
-        isValitePassword: false
+        password1: val,
+        checkPassword1: false,
+        isValitePassword1: false
       })
     }
   }
 
-  const handValidePassword = val => {
-    if (val.trim().length >= 6) {
+  const validatePassword2 = val => {
+    if (val.trim() === data.password1) {
       setData({
         ...data,
-        isValitePassword: true
+        password2: val,
+        checkPassword2: true,
+        isValitePassword2: true
       })
     } else {
       setData({
         ...data,
-        isValitePassword: false
+        password2: val,
+        checkPassword2: false,
+        isValitePassword2: false
       })
     }
   }
 
-  const updateHidePassword = () => {
+  const handValidePassword1 = val => {
+    if (val.trim().length >= 6) {
+      setData({
+        ...data,
+        isValitePassword1: true
+      })
+    } else {
+      setData({
+        ...data,
+        isValitePassword1: false
+      })
+    }
+  }
+
+  const handValidePassword2 = val => {
+    if (val.trim() === data.password1) {
+      setData({
+        ...data,
+        isValitePassword2: true
+      })
+    } else {
+      setData({
+        ...data,
+        isValitePassword2: false
+      })
+    }
+  }
+
+  const updateHidePassword1 = () => {
     setData({
       ...data,
-      hidePassword: !data.hidePassword
+      hidePassword1: !data.hidePassword1
+    })
+  }
+
+  const updateHidePassword2 = () => {
+    setData({
+      ...data,
+      hidePassword2: !data.hidePassword2
     })
   }
 
   const handleLogin = () => {
-    if (data.username.length == 0 || data.password.length == 0) {
+    if (
+      data.username.length == 0 ||
+      data.password1.length == 0 ||
+      data.password2.length == 0
+    ) {
       Toast.show('用户名和密码不能为空')
       return
     }
@@ -104,12 +151,17 @@ const Register = ({ navigation }) => {
       Toast.show('用户名最短2位')
       return
     }
-    if (data.password.length < 6) {
+    if (data.password1.length < 6) {
       Toast.show('密码最短6位')
       return
     }
+    if (data.password1 !== data.password2) {
+      Toast.show('确认密码与原值不匹配')
+      return
+    }
 
-    Toast.show('登陆成功')
+    Toast.show('注册成功')
+    navigation.navigate('Login')
   }
 
   return (
@@ -155,23 +207,49 @@ const Register = ({ navigation }) => {
               <TextInput
                 style={[styles.input]}
                 placeholder='密码'
-                value={data.password}
-                secureTextEntry={data.hidePassword ? true : false}
-                onChangeText={val => validatePassword(val)}
-                onEndEditing={e => handValidePassword(e.nativeEvent.text)}
+                value={data.password1}
+                secureTextEntry={data.hidePassword1 ? true : false}
+                onChangeText={val => validatePassword1(val)}
+                onEndEditing={e => handValidePassword1(e.nativeEvent.text)}
               />
-              <TouchableOpacity onPress={updateHidePassword}>
-                {data.hidePassword ? (
+              <TouchableOpacity onPress={updateHidePassword1}>
+                {data.hidePassword1 ? (
                   <Icons name={'eye-off-outline'} size={30} />
                 ) : (
                   <Icons name={'eye-outline'} size={30} />
                 )}
               </TouchableOpacity>
             </View>
-            {data.isValitePassword ? null : (
+            {data.isValitePassword1 ? null : (
               <Animatable.View animation='fadeInLeft' duration={300}>
                 <Text style={[styles.errerMsg, { position: 'absolute' }]}>
                   密码最短6位
+                </Text>
+              </Animatable.View>
+            )}
+
+            <View style={[styles.action]}>
+              <Icons name={'lock-outline'} size={30} />
+              <TextInput
+                style={[styles.input]}
+                placeholder='确认密码'
+                value={data.password2}
+                secureTextEntry={data.hidePassword2 ? true : false}
+                onChangeText={val => validatePassword2(val)}
+                onEndEditing={e => handValidePassword2(e.nativeEvent.text)}
+              />
+              <TouchableOpacity onPress={updateHidePassword2}>
+                {data.hidePassword2 ? (
+                  <Icons name={'eye-off-outline'} size={30} />
+                ) : (
+                  <Icons name={'eye-outline'} size={30} />
+                )}
+              </TouchableOpacity>
+            </View>
+            {data.isValitePassword2 ? null : (
+              <Animatable.View animation='fadeInLeft' duration={300}>
+                <Text style={[styles.errerMsg, { position: 'absolute' }]}>
+                  确认密码与原值不匹配
                 </Text>
               </Animatable.View>
             )}
@@ -183,12 +261,12 @@ const Register = ({ navigation }) => {
                   colors={['#08d4c4', '#01ab9d']}
                   style={styles.signIn}
                 >
-                  <Text style={[styles.textSign, { color: '#fff' }]}>登录</Text>
+                  <Text style={[styles.textSign, { color: '#fff' }]}>注册</Text>
                 </LinearGradient>
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={() => navigation.navigate('Register')}
+                onPress={() => navigation.navigate('Login')}
                 style={[
                   styles.signIn,
                   {
@@ -199,7 +277,7 @@ const Register = ({ navigation }) => {
                 ]}
               >
                 <Text style={[styles.textSign, { color: '#009387' }]}>
-                  注册
+                  返回登陆
                 </Text>
               </TouchableOpacity>
             </View>

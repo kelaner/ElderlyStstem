@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icons from '@expo/vector-icons/MaterialCommunityIcons'
 
-import HomeScreen from '../../screens/Home'
+import HomeScreen from '../../screens/Home/ServerHome'
 import Customer from '../../screens/Customer'
 
 

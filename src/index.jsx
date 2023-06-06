@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SelectScreen from './screens/NoAuth/Select'
 import LoginScreen from './screens/NoAuth/Login'
 import RegisterScreen from './screens/NoAuth/Register'
-
+import { StatusBar } from 'expo-status-bar'
 import ClientTab from './routes/Client'
 import MonitorTab from './routes/Monitor'
 import ServerTab from './routes/Server'
@@ -18,6 +18,7 @@ const index = () => {
 
   return (
     <>
+      <StatusBar style='light' backgroundColor='black' />
       {isLogin && selectValue === 0 ? (
         <ClientTab />
       ) : isLogin && selectValue === 1 ? (

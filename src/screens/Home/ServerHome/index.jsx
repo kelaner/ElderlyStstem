@@ -10,11 +10,7 @@ const Index = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Animatable.View
-        animation={'fadeInDownBig'}
-        style={styles.top}
-        // duration={500}
-      />
+      <Animatable.View animation={'fadeInDownBig'} style={styles.top} />
       <Searchbar
         style={styles.search}
         onChangeText={onChangeSearch}
@@ -22,12 +18,12 @@ const Index = ({ navigation }) => {
       />
       <Image
         style={styles.img}
-        source={require('../../../assets/img/老年健康宣传周.png')}
+        source={require('../../../../assets/img/老年健康宣传周.png')}
       />
       <View style={styles.nine}>
         <Image
           style={styles.box}
-          source={require('../../../assets/img/demo.png')}
+          source={require('../../../../assets/img/demo.png')}
         />
       </View>
     </View>
@@ -46,10 +42,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   search: {
-      width: 250,
-      height: 35,
-      position: 'absolute',
-      top: 35,
+    width: 250,
+    height: 35,
+    position: 'absolute',
+    top: 35
   },
   top: {
     position: 'absolute',

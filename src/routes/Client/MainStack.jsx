@@ -1,33 +1,28 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import OrderScreen from '../../screens/Order'
+import OrderScreen from '../../screens/MainTab/ServerMain'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 const OrderStack = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen
-                name='Order'
-                component={OrderScreen}
-                options={{
-                    title: '我的订单',
-                    headerTitleAlign: "center",
-                    headerTitleStyle: {
-                        fontSize: 30
-                    },
-                    headerRight: () => (
-                        <Text
-                            onPress={() => alert('消息')}>
-                            消息
-                        </Text>
-                    )
-                }}
-            />
-        </Stack.Navigator>
-    )
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name='Order'
+        component={OrderScreen}
+        options={{
+          title: '我的订单',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 30
+          },
+          headerRight: () => <Text onPress={() => alert('消息')}>消息</Text>
+        }}
+      />
+    </Stack.Navigator>
+  )
 }
 
 export default OrderStack
