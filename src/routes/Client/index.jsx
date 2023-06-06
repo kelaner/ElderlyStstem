@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 import HomeScreen from './HomeStack'
-import OrderScreen from './OrderStack'
+import MainScreen from './MainStack'
 import UserScreen from './UserStack'
 
 const Tab = createBottomTabNavigator();
@@ -19,8 +19,8 @@ const index = () => {
                     if (route.name === '首页') {
                         iconName = focused ? 'home' : 'home-outline'
                     }
-                    else if (route.name === '接单') {
-                        iconName = focused ? 'document-text' : 'document-text-outline'
+                    else if (route.name === '服务') {
+                        iconName = focused ? 'cube' : 'cube-outline'
                     }
                     else if (route.name === '我的') {
                         iconName = focused ? 'person' : 'person-outline'
@@ -41,8 +41,8 @@ const index = () => {
                 }}
             />
             <Tab.Screen
-                name="接单"
-                component={OrderScreen}
+                name="服务"
+                component={MainScreen}
                 options={{
                     headerShown: false,
                     tabBarLabelStyle: {

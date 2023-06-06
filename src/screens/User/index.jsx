@@ -49,7 +49,7 @@ const Index = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     onPress={() => navigation.navigate('Login')}
                 >
                     <View style={[styles.listItems]}>
@@ -73,7 +73,7 @@ const Index = ({ navigation }) => {
                         </View>
                         <Icons name={'chevron-right'} size={30} color={'#1e1e1e'} />
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 <TouchableOpacity
                     onPress={() => doLogout()}
