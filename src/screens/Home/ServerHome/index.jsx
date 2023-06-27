@@ -1,7 +1,16 @@
-import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  Image,
+  TouchableOpacity
+} from 'react-native'
 import React, { useState } from 'react'
 import * as Animatable from 'react-native-animatable'
 import { Searchbar } from 'react-native-paper'
+import Toast from 'react-native-root-toast'
 
 const Index = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -21,10 +30,12 @@ const Index = ({ navigation }) => {
         source={require('../../../../assets/img/老年健康宣传周.png')}
       />
       <View style={styles.nine}>
-        <Image
-          style={styles.box}
-          source={require('../../../../assets/img/demo.png')}
-        />
+        <TouchableOpacity onPress={() => Toast.show('Todo')}>
+          <Image
+            style={styles.box}
+            source={require('../../../../assets/img/demo.png')}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   )

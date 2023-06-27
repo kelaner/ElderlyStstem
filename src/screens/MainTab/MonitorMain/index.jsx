@@ -23,48 +23,18 @@ const Index = ({ navigation }) => {
       <View style={styles.main}>
         <TouchableOpacity style={[styles.button]}>
           <Text style={{ fontSize: 25, padding: 10 }}>
-            <Ionicons name={'book-outline'} size={30} />
-            委托内容
-          </Text>
-          <Ionicons name={'chevron-forward-outline'} size={30} />
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button]}>
-          <Text style={{ fontSize: 25, padding: 10 }}>
             <Ionicons name={'location-outline'} size={30} />
             即时位置
           </Text>
           <Ionicons name={'chevron-forward-outline'} size={30} />
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button]}>
-          <Text style={{ fontSize: 25, padding: 10 }}>
-            <Ionicons name={'alert-circle-outline'} size={30} />
-            注意事项
-          </Text>
-          <Ionicons name={'chevron-forward-outline'} size={30} />
-        </TouchableOpacity>
+
         <TouchableOpacity style={[styles.button]}>
           <Text style={{ fontSize: 25, padding: 10 }}>
             <Ionicons name={'call-outline'} size={30} />
             联系方式
           </Text>
           <Ionicons name={'chevron-forward-outline'} size={30} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Locate')}
-          style={{
-            width: 200,
-            height: 50,
-            margin: 20,
-            backgroundColor: '#5573d0',
-            borderRadius: 30,
-            alignItems: 'center',
-            flexDirection: 'column',
-            justifyContent: 'center'
-          }}
-        >
-          <Text style={{ fontSize: 25, color: 'white', letterSpacing: 12 }}>
-            接单
-          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -119,7 +89,7 @@ const styles = StyleSheet.create({
   },
 
   main: {
-    flex: 4,
+    flex: 2,
     width: '100%',
     backgroundColor: '#dfdfdf',
     display: 'flex',

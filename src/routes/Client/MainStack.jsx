@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
-import OrderScreen from '../../screens/MainTab/ServerMain'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import ClientScreen from '../../screens/MainTab/ClientMain'
+import Toast from 'react-native-root-toast'
 
 const Stack = createNativeStackNavigator()
 
@@ -11,14 +12,33 @@ const OrderStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name='Order'
-        component={OrderScreen}
+        component={ClientScreen}
         options={{
-          title: '我的订单',
+          title: '订单已完成',
           headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontSize: 30
+          headerStyle: {
+            backgroundColor: '#148cfc'
           },
-          headerRight: () => <Text onPress={() => alert('消息')}>消息</Text>
+          headerTitleStyle: {
+            fontSize: 22,
+            color: 'white'
+          },
+          headerLeft: () => (
+            <Ionicons
+              name={'chevron-back'}
+              color={'white'}
+              size={29}
+              onPress={() => Toast.show('back')}
+            />
+          ),
+          headerRight: () => (
+            <Ionicons
+              name={'menu'}
+              color={'white'}
+              size={29}
+              onPress={() => Toast.show('menu')}
+            />
+          )
         }}
       />
     </Stack.Navigator>

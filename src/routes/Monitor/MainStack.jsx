@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import OrderScreen from '../../screens/MainTab/ServerMain'
+import OrderScreen from '../../screens/MainTab/MonitorMain'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,12 +13,11 @@ const OrderStack = () => {
         name='Order'
         component={OrderScreen}
         options={{
-          title: '我的订单',
+          title: '监护',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 30
-          },
-          headerRight: () => <Text onPress={() => alert('消息')}>消息</Text>
+          }
         }}
       />
     </Stack.Navigator>
